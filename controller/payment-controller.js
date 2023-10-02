@@ -23,8 +23,8 @@ export const addPaymentGateway=async (request,response)=>{
         payment_method_types:['card'],
         line_items:lineItems,
         mode:'payment',
-        success_url: `success`,
-        cancel_url: `cancel`,
+        success_url: `/success`,
+        cancel_url: `/cancel`,
 
 
     })

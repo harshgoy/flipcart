@@ -9,7 +9,7 @@ router.post('/signup',userSignup);
 router.post('/login',userLogin);
 router.get('/products',getProducts);
 router.get('/product/:id',getProductById);
-router.post('/create-checkout-session',addPaymentGateway);
+router.post('product/create-checkout-session',addPaymentGateway);
 
 
 export default router;
