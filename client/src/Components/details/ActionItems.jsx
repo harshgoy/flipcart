@@ -73,7 +73,7 @@ const ActionItems = ({ product }) => {
     const headers={
       "Content-Type":"application/json"
     }
-    const response= await fetch("create-checkout-session",{
+    const response= await fetch("/create-checkout-session",{
       method:"POST",
       headers:headers,
       body:JSON.stringify(body)
