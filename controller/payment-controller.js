@@ -23,7 +23,7 @@ export const addPaymentGateway=async (request,response)=>{
         payment_method_types:['card'],
         line_items:lineItems,
         mode:'payment',
-        success_url: `https://www.flipkart.com/`,
+        success_url: `/success`,
         cancel_url: `https://www.google.com/`,
 
 
