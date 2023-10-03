@@ -3,6 +3,7 @@ import "react-multi-carousel/lib/styles.css";
 import {Box, Button, Divider, Typography,styled} from "@mui/material";
 import Countdown from 'react-countdown';
 import { Link } from "react-router-dom";
+import {useSelector} from"react-redux";
 const responsive = {
    
     desktop: {
@@ -67,6 +68,7 @@ const Slide = ({products,title,timer}) => {
   const renderer =({hours, minutes, seconds})=>{
     return <Box variant ="span">{hours} : {minutes} : {seconds} Left</Box>
   }
+
   
 const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion/img/timer_a73398.svg';
   return (
@@ -115,5 +117,6 @@ const timerURL = 'https://static-assets-web.flixcart.com/www/linchpin/fk-cp-zion
     
   )
 }
+
 
 export default Slide;

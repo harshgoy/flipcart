@@ -63,6 +63,7 @@ const ActionItems = ({ product }) => {
 
   }
   const{cartItems}=useSelector(state=>state.cart);
+ 
 
   const buyNow = async () => {
     const stripe = await loadStripe('pk_test_51NvnFCSFdBIjz8ZMhjXyGdue06AIgdceFXt89fETpoo2lKA0omwt87E1YenAJyi7HE2JPL5zg28V5zd2pyB0airR008iNaEb6N');

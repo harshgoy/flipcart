@@ -15,10 +15,7 @@ app.use(bodyParser.json({extended:true}));
 app.use(bodyParser.urlencoded({extended:true}));
 app.use('/',Router);
 
-// app.post('/api/create-checkout-session', async(req,res)=>{
-//   const products =req.body;
-//   console.log(products);
-// })
+
 
 const PORT=process.env.PORT||8000;
 const USERNAME = process.env.DB_USERNAME;
@@ -27,6 +24,8 @@ const URL=process.env.MONGODB_URI || `mongodb+srv://${USERNAME}:${PASSWORD}@ecom
 
 Connection(URL); 
 if(process.env.NODE_ENV ==='production'){
+    app.use(express.static('client/build'))
+}else{
     app.use(express.static('client/build'))
 }
 

@@ -5,6 +5,7 @@ import { getProductDetails } from "../../redux/actions/productActions";
 import {Box,styled,Grid} from "@mui/material";
 import ActionItems from "./ActionItems";
 import ProductDetail from "./ProductDetail";
+import CircularProgress from '@mui/material/CircularProgress';
 
 const Component =styled(Box)`
 background:#F2F2F2;
@@ -31,6 +32,15 @@ padding-left:25px;
     margin-top:10px;
 }
 `;
+const Progress =styled(CircularProgress)`
+position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+text-align: center;
+top:50%
+`
 
 const DetailView = () => {
    
@@ -38,6 +48,7 @@ const DetailView = () => {
     const dispatch = useDispatch();
     const {id} =useParams();
     const {loading, product}=useSelector(state=>state.getProductDetails);
+    console.log(loading);
 
 
     useEffect(()=>{
@@ -47,6 +58,9 @@ const DetailView = () => {
     },[dispatch,id,product,loading])
  
   return (
+    loading ?
+    <Progress/>
+    :
     <Component>
         {
             product &&Object.keys(product).length&&
