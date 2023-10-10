@@ -20,3 +20,10 @@ export const removeFromCart=(id)=>(dispatch)=>{
     dispatch({type:actionTypes.REMOVE_FROM_CART,payload:id})
     
 }
+
+export const reduceQuantity =(id)=>(dispatch)=>{
+    dispatch({type:actionTypes.REDUCE_QUANTITY,payload:id})
+}
+export const increaseQuantity =(id)=>(dispatch)=>{
+    dispatch({type:actionTypes.INCREASE_QUANTITY,payload:id})
+}

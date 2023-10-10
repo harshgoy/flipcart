@@ -4,7 +4,9 @@ import {Grid,Typography,Box,styled, Button} from "@mui/material"
 import CartItem from './CartItem';
 import TotalView from './TotalView';
 import EmptyCart from './EmptyCart';
+import { useContext} from "react";
 import {loadStripe} from '@stripe/stripe-js';
+import { DataContext } from '../../context/DataProvider';
 
 const Container= styled(Grid)(({theme})=>({
     padding:'30px 135px',
@@ -48,6 +50,7 @@ const LeftComponent=styled(Grid)(({theme})=>({
 
 const Cart = () => {
     const{cartItems}=useSelector(state=>state.cart)
+    const {account,setAccount}=useContext(DataContext);
    
 
   const buyNow = async () => {
@@ -87,10 +90,14 @@ const Cart = () => {
                     <CartItem item={item}/>
                 ))
             }
+            
             <ButtonWrapper>
-                <StyledButton onClick={() => buyNow()}>
-                    PLACE ORDER
-                </StyledButton>
+              {
+                account?<StyledButton onClick={() => buyNow()}>
+                PLACE ORDER
+            </StyledButton>:"Pls login first to place an order"
+              }
+                
             </ButtonWrapper>
         </LeftComponent>
         <Grid item lg={3} md={3} sm={12} xs={12}>

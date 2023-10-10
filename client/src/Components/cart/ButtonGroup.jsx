@@ -1,21 +1,32 @@
-import { ButtonGroup ,Button,styled} from "@mui/material"
+import { ButtonGroup, Button, styled } from "@mui/material";
+import { useDispatch } from 'react-redux';
+import { reduceQuantity, increaseQuantity } from "../../redux/actions/cartActions";
 
 
-const Component=styled(ButtonGroup)`
+const Component = styled(ButtonGroup)`
 margin-top:30px;
 `;
 
-const StyledButton=styled(Button)`
+const StyledButton = styled(Button)`
 border-radius:50%;
 `;
 
-const GroupedButton = () => {
+const GroupedButton = ({ quantity, pid }) => {
+  const dispatch = useDispatch();
   return (
     <Component>
-        <StyledButton>-</StyledButton>
-        <StyledButton disabled>1</StyledButton>
-        <StyledButton>+</StyledButton>
-      
+      {quantity>1&&
+      <StyledButton onClick={() => {
+        dispatch(reduceQuantity(pid))
+
+      }}>-</StyledButton>}
+      <StyledButton disabled>{quantity}</StyledButton>
+      <StyledButton onClick={() => {
+        dispatch(increaseQuantity(pid))
+
+
+      }}>+</StyledButton>
+
     </Component>
   )
 }

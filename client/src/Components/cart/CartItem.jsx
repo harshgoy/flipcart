@@ -40,7 +40,7 @@ const CartItem = ({item}) => {
     <Component>
         <LeftComponent>
             <img src={item.url} alt="cartprodimg" style={{height:110,width:110}}/>
-            <ButtonGroup/>
+            <ButtonGroup quantity={item.quantity } pid={item.id}/>
         </LeftComponent>
         <Box style={{margin:20}}>
             <Typography>{addEllipsis(item.title.longTitle)}</Typography>
@@ -48,8 +48,8 @@ const CartItem = ({item}) => {
                 <Box component='span'><img src={fassured} alt='flipkart' style={{width:50,marginLeft:10}}/></Box>
             </SmallText>
             <Typography style={{margin: '20px 0'}}>
-                <Box component='span' style={{fontWeight:600,fontSize:18}}>₹{item.price.cost}</Box>&nbsp;&nbsp;&nbsp;
-                <Box component='span' style={{color:'#878787'}}><strike>₹{item.price.mrp}</strike></Box>&nbsp;&nbsp;&nbsp;
+                <Box component='span' style={{fontWeight:600,fontSize:18}}>₹{item.price.cost*item.quantity}</Box>&nbsp;&nbsp;&nbsp;
+                <Box component='span' style={{color:'#878787'}}><strike>₹{item.price.mrp*item.quantity}</strike></Box>&nbsp;&nbsp;&nbsp;
                 <Box component='span' style={{color:'#388E3C'}}>{item.price.discount}</Box>
             </Typography>
             <Remove onClick={()=>removeItemFromCart(item.id)}>REMOVE</Remove>
